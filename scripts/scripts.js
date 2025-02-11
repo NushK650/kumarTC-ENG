@@ -44,7 +44,10 @@ import {
   addName.addEventListener("keydown", (event)=>{
 if(event.key === "Enter"){
     const name = addName.value 
-    
+     saveToLocalStorageByName(name)
+     console.log(getFavorites)
+     getFavorites();
+     addName.value = "";
 }
   })
 
