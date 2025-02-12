@@ -6,12 +6,30 @@
     <link rel="stylesheet" href="./src/output.css" />
     <title>Document</title>
 </head>
-<body>
-    <input id="addName" type="text" placeholder="Name Here">
-    <input type="range" min="1" max="4" value="50" class="slider" id="myRange">
-    <div id="groupsPopup">
-        <p>Groups</p>
-        <div id="info"> </div>
+<body class="bg-gray-500 text-white">
+    <h1 class="place-self-center mb-5 font-bold" >Sort'Em</h1>
+    <div class="flex justify-center">
+        <input id="addName" class="  mb-5 indent-13 bg-white rounded-sm text-black" type="text" placeholder="Name Here">
     </div>
+    <p id="sliderValue" class="place-self-center">Group Size:</p>
+   <div class="grid place-content-center mb-5">
+       <input  type="range" min="1" max="4" value="3" id="slider">
+   </div>
+
+   <button id="getGroups" class="mb-5 bg-blue-600 rounded-xl p-1 text-white grid place-self-center" >Get Groups</button>
+   <div class="md:flex md:justify-around ">
+
+       <div  class=" grid place-content-center">
+    <p>Groups</p>
+    <div id="groupInfo"> </div>
+    
+        </div>
+        <div class="grid place-content-center">
+            <p>People</p>
+            <div id="info"> </div>
+    
+        </div>
+   </div>
+    <script type="module" src="./scripts/scripts.js"></script>
 </body>
 </html>

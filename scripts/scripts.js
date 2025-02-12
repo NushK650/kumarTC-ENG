@@ -6,6 +6,10 @@ import {
 
   const addName = document.getElementById("addName")
   const info = document.getElementById("info")
+  const slider = document.getElementById("slider")
+  const sliderValue = document.getElementById("sliderValue")
+  const  getGroups = document.getElementById("getGroups")
+  const groupInfo = document.getElementById("groupInfo")
 
   function getFavorites() {
     let favoritesList = getLocalStorage();
@@ -40,16 +44,66 @@ import {
       info.appendChild(div);
     });
   }
+  
+
+
+  function sortGroups() {
+    let peopleList = getLocalStorage();
+    let groupSize = parseInt(slider.value);
+    if (peopleList.length === 0) {
+      groupInfo.innerText = "Nothing Yet!";
+      return;
+    }else{
+        
+    
+        
+        
+        
+        let groups = [];
+    for (let i = 0; i < peopleList.length; i += groupSize) {
+        groups.push(peopleList.slice(i, i + groupSize));
+    }
+        
+        
+        groupInfo.innerHTML = "";
+        groups.forEach((group, index) => {
+            let div = document.createElement("div");
+            div.className = "p-2 rounded-md mb-2";
+            
+            let title = document.createElement("h3");
+            title.innerText = `Group ${index + 1}`;
+            title.className = " mb-1";
+            
+            let groupMembers = document.createElement("p");
+            groupMembers.innerText = group.join(", ");
+            
+            div.appendChild(title);
+            div.appendChild(groupMembers);
+            groupInfo.appendChild(div);
+        });
+    }
+  }
+  
+  
+
+  getGroups.addEventListener("click", ()=>{
+    sortGroups();
+    console.log("works")
+  })
+
+  slider.addEventListener("change",()=>{
+    sliderValue.innerText = `Group Size: ${slider.value}`
+  })
 
   addName.addEventListener("keydown", (event)=>{
 if(event.key === "Enter"){
     const name = addName.value 
      saveToLocalStorageByName(name)
-     console.log(getFavorites)
      getFavorites();
      addName.value = "";
 }
   })
 
+  getFavorites();
 
   
